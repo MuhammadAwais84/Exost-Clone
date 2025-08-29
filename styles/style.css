@@ -1,0 +1,314 @@
+/* ========== CSS Boilerplate ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #efefef;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+
+/* ========================================
+   ============= Loader Section ===========
+   ======================================== */
+
+.loader {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.track {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-40px);
+  width: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.line {
+  width: 5px;
+  height: 0vh;
+  background-color: rgb(255, 255, 255);
+
+}
+
+p {
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+}
+
+.boxes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.left {
+  width: 50%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+}
+
+.right {
+  width: 50%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+}
+
+img {
+  height: 70px;
+  width: 70px;
+  transform: rotateZ(90deg);
+}
+
+
+/* ========================================
+   ============= Home Section =============
+   ======================================== */
+
+.home {
+  width: 100%;
+  background-color: #84914c;
+  overflow-x: hidden;
+}
+
+
+/* page 1 css code start here  */
+.page1 {
+  height: 100vh;
+  width: 100%;
+}
+
+/* video box  */
+.video {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* overly on video  */
+.overly {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(14, 59, 0, 0.234);
+}
+
+/* video styling */
+.video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* video ko box fill karne ke liye */
+  z-index: -1;
+  /* content ke niche bhej do */
+}
+
+
+/* discover btn styling on video */
+.discover-btn {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 95%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.5rem;
+}
+
+/* page 1 css code ended here  */
+
+
+/* page 2 css code start from here  */
+.page2 {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(1rem, 4vw, 3rem) clamp(1.5rem, 6vw, 6rem);
+  text-align: center;
+  box-sizing: border-box;
+  gap: 1.5rem;
+}
+
+/* Clock Image */
+.page2 img {
+  width: clamp(3rem, 10vw, 6rem);
+  height: clamp(3rem, 10vw, 6rem);
+  margin-bottom: clamp(1.5rem, 5vw, 4rem);
+  transform: rotateZ(0deg);
+}
+
+/* Heading */
+.page2 h1 {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Paragraph */
+.page2 p {
+  max-width: 65ch;
+  /* keeps text readable */
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: 1rem;
+}
+
+/* Buttons container */
+.page2 .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Buttons */
+.page2 .compition {
+  padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 3vw, 2rem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  border: 5px solid rgb(0, 0, 0);
+  background-color: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.page2 .discover {
+  padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 3vw, 2rem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  border: 5px solid rgb(0, 0, 0);
+  background-color: black;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #84914c;
+  transition: background 0.3s ease;
+}
+
+/* page 2 css code ended here  */
+.page3 {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(1rem, 4vw, 3rem) clamp(1.5rem, 6vw, 6rem);
+  text-align: center;
+  box-sizing: border-box;
+  gap: 1.5rem;
+}
+
+.page3 img {
+  width: clamp(18rem, 28vw, 14rem);
+  height: clamp(13rem, 15vw, 8rem);
+  margin-bottom: clamp(1.5rem, 5vw, 4rem);
+  transform: rotateZ(0deg);
+}
+
+.page3 h1 {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Paragraph */
+.page3 p {
+  max-width: 65ch;
+  /* keeps text readable */
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: 1rem;
+}
+
+
+
+.page4 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.warpper {
+  display: flex;
+  flex-direction: row;
+  transform: translateX(40%);
+  gap: 2.5rem;
+}
+
+.box {
+  flex-shrink: 0;
+  height: 20rem;
+  width: 20rem;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;   /* extra part cut ho jaye */
+}
+
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: rotate(360deg); /* ya -90deg try karo */
+}
+
+.box1 {
+  transform: translateY(0px) rotateZ(5deg);
+  background-color: red;
+}
+
+.box2 {
+  transform: translateX(0px) rotateZ(-5deg);
+  background-color: blue;
+}
+
+.box3 {
+  transform: translateY(-50px) rotate(15deg);
+  background-color: yellow;
+}
+
+.box4 {
+  transform: translateX(40px) rotate(20deg);
+  background-color: rgb(153, 255, 0);
+}
+
+.box5 {
+  transform: translateX(-80px) rotate(-30deg);
+  background-color: cyan;
+}
