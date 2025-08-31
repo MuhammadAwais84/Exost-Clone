@@ -277,7 +277,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;   /* extra part cut ho jaye */
+  overflow: hidden;
+  /* extra part cut ho jaye */
 }
 
 .box img {
@@ -285,7 +286,8 @@ img {
   height: 100%;
   object-fit: cover;
   display: block;
-  transform: rotate(360deg); /* ya -90deg try karo */
+  transform: rotate(360deg);
+  /* ya -90deg try karo */
 }
 
 .box1 {
@@ -311,4 +313,98 @@ img {
 .box5 {
   transform: translateX(-80px) rotate(-30deg);
   background-color: cyan;
+}
+
+
+
+/* ========================================
+  ========== Limitation Section ==========
+  ======================================== */
+
+/* Container for limitation boxes */
+.limitation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+/* Individual limitation box */
+.limitation-box {
+  width: 80%;
+  min-height: 260px;
+  height: clamp(260px, 28vw, 380px);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 1.5rem 1rem;
+  text-align: center;
+  transition: box-shadow 0.2s;
+  border: 6px solid #8787876a;
+  color: yellowgreen;
+}
+
+/* Limitation box background color modifiers */
+.limi1 {
+  background-color: #565a29;
+}
+.limi2 {
+  background-color: #254D2B;
+}
+.limi3 {
+  background-color: #323232;
+}
+.limi4 {
+  background-color: #5B2C57;
+}
+
+/* Limitation box image */
+.limitation-box img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+  transform: rotate(360deg);
+}
+
+/* Limitation box heading */
+.limitation-box h3 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 0.3rem 0;
+  font-weight: 700;
+}
+
+/* Limitation box paragraph */
+.limitation-box p {
+  font-size: 1.4rem;
+  margin: 0;
+  color: yellowgreen;
+}
+
+/* Responsive styles for tablets */
+@media (max-width: 900px) {
+  .limitation-container {
+   gap: 1rem;
+  }
+  .limitation-box {
+   max-width: 80%;
+   padding: 1.2rem 0.5rem;
+  }
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 600px) {
+  .limitation-container {
+   gap: 1.2rem;
+  }
+  .limitation-box {
+   max-width: 95%;
+   padding: 1rem 0.5rem;
+  }
 }
