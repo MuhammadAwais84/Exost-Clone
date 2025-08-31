@@ -1,11 +1,11 @@
-// if ('scrollRestoration' in history) {
-//       history.scrollRestoration = 'manual';
-//     }
+if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
-//     // Reload hone ke baad hamesha top pe scroll karo
-//     window.onbeforeunload = function () {
-//       window.scrollTo(0, 0);
-//     };
+    // Reload hone ke baad hamesha top pe scroll karo
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
 
 
    let discoverBtn=document.querySelector(".discover-btn");
@@ -16,3 +16,16 @@
     });
     
    })
+
+
+   
+let lastScrollTop = 0;
+window.addEventListener("scroll", function () {
+    let st = this.scrollTop || this.scrollY || 0;
+    if (st > lastScrollTop) {
+        
+    } else if (st < lastScrollTop) {
+
+    }
+    lastScrollTop = st <= 0 ? 0 : st;
+});

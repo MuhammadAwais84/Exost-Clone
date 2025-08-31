@@ -24,9 +24,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
   color: #efefef;
-  height: 100vh;            /* single-view layout: limits page to viewport height */
+  height: 100vh;
+  /* single-view layout: limits page to viewport height */
   width: 100%;
-  overflow: hidden;         /* hide native scrollbars (used when custom scroll/animation present) */
+  overflow: hidden;
+  /* hide native scrollbars (used when custom scroll/animation present) */
   scroll-behavior: smooth;
 }
 
@@ -47,17 +49,20 @@ main {
 .loader {
   position: absolute;
   width: 100%;
-  height: 100vh;            /* covers the full viewport until loading finishes */
+  height: 100vh;
+  /* covers the full viewport until loading finishes */
   display: flex;
   overflow: hidden;
-  z-index: 9999;            /* keep loader above all interactive content */
+  z-index: 9999;
+  /* keep loader above all interactive content */
 }
 
 /* center vertical track for loader visuals */
 .track {
   position: absolute;
   left: 50%;
-  transform: translateX(-40px); /* slightly offset intentionally for effect */
+  transform: translateX(-40px);
+  /* slightly offset intentionally for effect */
   width: 5rem;
   display: flex;
   flex-direction: column;
@@ -106,8 +111,9 @@ img {
 */
 .home {
   width: 100%;
-  background-color: #84914c; /* fallback background while video loads */
+  /* fallback background while video loads */
   overflow-x: hidden;
+  background-color: #84914c;
 }
 
 /* Full-screen first page container */
@@ -138,7 +144,8 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* fill container without distortion when cropping allowed */
+  object-fit: cover;
+  /* fill container without distortion when cropping allowed */
   z-index: -1;
 }
 
@@ -147,7 +154,8 @@ img {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  top: 95%;                 /* intentionally near the bottom - adjust if overlaps on small screens */
+  top: 95%;
+  /* intentionally near the bottom - adjust if overlaps on small screens */
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   display: flex;
@@ -281,10 +289,12 @@ img {
   overflow: hidden;
 }
 
-.warpper {                   /* intentional spelling preserved (wrapper?) */
+.warpper {
+  /* intentional spelling preserved (wrapper?) */
   display: flex;
   flex-direction: row;
-  transform: translateX(40%); /* visual offset to center composition */
+  transform: translateX(40%);
+  /* visual offset to center composition */
   gap: 2.5rem;
 }
 
@@ -297,7 +307,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;         /* hide image overflow for neat crop */
+  overflow: hidden;
+  /* hide image overflow for neat crop */
 }
 
 .box img {
@@ -305,15 +316,35 @@ img {
   height: 100%;
   object-fit: cover;
   display: block;
-  transform: rotate(360deg); /* reset rotation; change for design effect */
+  transform: rotate(360deg);
+  /* reset rotation; change for design effect */
 }
 
 /* individual offsets to create the scattered collage look */
-.box1 { transform: translateY(0px) rotateZ(5deg); background-color: red; }
-.box2 { transform: translateX(0px) rotateZ(-5deg); background-color: blue; }
-.box3 { transform: translateY(-50px) rotate(15deg); background-color: yellow; }
-.box4 { transform: translateX(40px) rotate(20deg); background-color: rgb(153, 255, 0); }
-.box5 { transform: translateX(-80px) rotate(-30deg); background-color: cyan; }
+.box1 {
+  transform: translateY(0px) rotateZ(5deg);
+  background-color: red;
+}
+
+.box2 {
+  transform: translateX(0px) rotateZ(-5deg);
+  background-color: blue;
+}
+
+.box3 {
+  transform: translateY(-50px) rotate(15deg);
+  background-color: yellow;
+}
+
+.box4 {
+  transform: translateX(40px) rotate(20deg);
+  background-color: rgb(153, 255, 0);
+}
+
+.box5 {
+  transform: translateX(-80px) rotate(-30deg);
+  background-color: cyan;
+}
 
 
 /* ========================================
@@ -324,7 +355,8 @@ img {
 */
 .limitation {
   position: relative;
-  height: 100vh;            /* allocate full viewport for the pinned animation */
+  height: 100vh;
+  /* allocate full viewport for the pinned animation */
   overflow: hidden;
 }
 
@@ -354,15 +386,28 @@ img {
   justify-content: center;
   padding: 2rem 1rem 1.5rem 1rem;
   text-align: center;
-  border: 6px solid #8787876a; /* subtle outer border for separation */
-  color: yellowgreen;          /* text color override for contrast on dark backgrounds */
+  border: 6px solid #8787876a;
+  /* subtle outer border for separation */
+  color: yellowgreen;
+  /* text color override for contrast on dark backgrounds */
 }
 
 /* color variants for each stacked box */
-.limi1 { background-color: #565a29; }
-.limi2 { background-color: #254D2B; }
-.limi3 { background-color: #323232; }
-.limi4 { background-color: #5B2C57; }
+.limi1 {
+  background-color: #565a29;
+}
+
+.limi2 {
+  background-color: #254D2B;
+}
+
+.limi3 {
+  background-color: #323232;
+}
+
+.limi4 {
+  background-color: #5B2C57;
+}
 
 /* content sizing inside the limitation boxes */
 .limitation-box img {
@@ -416,7 +461,8 @@ img {
 
 .card {
   position: absolute;
-  top: 110%;               /* placed off-screen by default; animate into view */
+  top: 110%;
+  /* placed off-screen by default; animate into view */
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 1.5rem;
@@ -432,12 +478,25 @@ img {
 }
 
 /* color variants for cards - keep semantic names for maintainability */
-.card-green { background-color: #4a6f4a; }
-.card-dark  { background-color: #1a1a1a; }
-.card-yellow{ background-color: rgb(65, 65, 0); }
+.card-green {
+  background-color: #4a6f4a;
+}
 
-.text-green      { color: #92e092; }
-.text-light-blue { color: #b3cde3; }
+.card-dark {
+  background-color: #1a1a1a;
+}
+
+.card-yellow {
+  background-color: rgb(65, 65, 0);
+}
+
+.text-green {
+  color: #92e092;
+}
+
+.text-light-blue {
+  color: #b3cde3;
+}
 
 .card-text-main {
   color: #fff;
@@ -496,6 +555,103 @@ img {
 */
 @media (min-width: 1024px) {
   .container {
-    flex-direction: column; /* switching to column on wide screens to stack content */
+    flex-direction: column;
+    /* switching to column on wide screens to stack content */
   }
+}
+
+
+
+
+
+
+.promo-section {
+  width: 100%;
+  height: 100vh;
+}
+
+.promo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.ticket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: auto;
+  z-index: 7;
+}
+.ticket img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: rotate(0deg);
+    transform: scale(1.2);
+}
+
+.kid {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: auto;
+  z-index: 9;
+
+}
+.kid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: rotate(0deg);
+}
+
+.map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: auto;
+  transform: translateX(10% );
+  z-index: 8;
+
+}
+.map img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: rotate(0deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .promo-wrapper {
+    aspect-ratio: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ticket,
+  .kid,
+  .map {
+    position: static;
+    transform: none;
+    width: 80%;
+    max-width: none;
+    margin-bottom: 15px;
+  }
+}
+
+
+.page8{
+  width: 100%;
+  height: 100vh;
 }

@@ -1,3 +1,5 @@
+
+gsap.registerPlugin(ScrollTrigger);
 function animateLoader() {
     let txt = document.querySelector(".txt");
 
@@ -88,6 +90,20 @@ function page2_page3Animate() {
         }
     })
 
+
+    // at page 3 home bg color changing here 
+    gsap.to(".home", {
+        backgroundColor: "#000000ff", // new color
+        ease: "back.inOut(2)",
+        scrollTrigger: {
+            trigger: ".page3",
+            scroller: "body",
+            scrub: 5,
+            start: "top 80%",
+            end: "top 20%"
+        }
+    })
+
 }
 
 function animatethepics() {
@@ -149,50 +165,67 @@ function limitation() {
     });
 
 }
+
+function cardanimation() {
+
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".card-container",
+            scroller: "body",
+            scrub: true,
+            start: "top 0%",
+            end: "top -100%",
+            pin: true,
+        }
+    })
+    tl.to(".card-green", {
+        y: "-230%",
+        x: "-140%",
+        transform: "rotate(-4deg)",
+    })
+    tl.to(".card-dark", {
+        y: "-185%",
+        x: "0%",
+    })
+    tl.to(".card-yellow", {
+        y: "-240%",
+        x: "20%",
+        transform: "rotate(-5deg)",
+    })
+}
+function animatech() {
+
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".promo-section",
+            scroller: "body",
+            scrub: 7,
+            start: "top 80%",
+            end: "top 0%"
+        }
+    });
+
+    tl.from(".ticket,.kid", {
+        x: 200,
+        ease: "none",
+
+    }, 0)
+    tl.from(".map", {
+        x: -200,
+        ease: "none",
+
+    }, 0)
+
+}
+
 animateLoader();
 animateVideo();
-// at page 3 home bg color changing here 
-gsap.to(".home", {
-    backgroundColor: "#000000ff", // new color
-    ease: "back.inOut(2)",
-    scrollTrigger: {
-        trigger: ".page3",
-        scroller: "body",
-        scrub: 5,
-        start: "top 80%",
-        end: "top 20%"
-    }
-})
-page2_page3Animate();
 
+
+page2_page3Animate();
 animatethepics();
 limitation();
+cardanimation();
+animatech();
 
 
-
-
-
-let tl=gsap.timeline({
-    scrollTrigger: {
-        trigger: ".card-container",
-        scroller: "body",
-        scrub: true,
-        start: "top 0%",
-        end: "top -100%",
-        pin: true,
-    }
-})
-tl.to(".card-green", {
-    y: "-230%",
-    x: "-140%",
-    transform: "rotate(-4deg)",
-})
-tl.to(".card-dark", {
-    y: "-185%",
-    x: "0%",
-})
-tl.to(".card-yellow", {
-    y: "-240%",
-    x: "20%",
-    transform: "rotate(-5deg)",
-})
