@@ -116,37 +116,37 @@ function animatethepics() {
 
 }
 function limitation() {
-    
 
-const boxes = gsap.utils.toArray(".limitation-box");
 
-let tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".limitation",
-    start: "top top",
-    end: "+=" + (boxes.length * window.innerHeight),
-    scrub: true,
-    pin: true,
-  }
-});
+    const boxes = gsap.utils.toArray(".limitation-box");
 
-boxes.forEach((box, i) => {
-  if (i === 0) return; // skip first
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".limitation",
+            start: "top top",
+            end: "+=" + (boxes.length * window.innerHeight),
+            scrub: true,
+            pin: true,
+        }
+    });
 
-  tl.fromTo(
-    box,
-    { y: "100%", scale: 1, opacity: 0 },
-    { y: "0%", opacity: 1, duration: 1 },
-    i
-  );
+    boxes.forEach((box, i) => {
+        if (i === 0) return; // skip first
 
-  // previous box scale down
-  tl.to(
-    boxes[i - 1],
-    { scale: 0.95,opacity:0.5, duration: 1 },
-    i
-  );
-});
+        tl.fromTo(
+            box,
+            { y: "100%", scale: 1, opacity: 0 },
+            { y: "0%", opacity: 1, duration: 1 },
+            i
+        );
+
+        // previous box scale down
+        tl.to(
+            boxes[i - 1],
+            { scale: 0.95, opacity: 0.5, duration: 1 },
+            i
+        );
+    });
 
 }
 animateLoader();
@@ -168,3 +168,31 @@ page2_page3Animate();
 animatethepics();
 limitation();
 
+
+
+
+
+let tl=gsap.timeline({
+    scrollTrigger: {
+        trigger: ".card-container",
+        scroller: "body",
+        scrub: true,
+        start: "top 0%",
+        end: "top -100%",
+        pin: true,
+    }
+})
+tl.to(".card-green", {
+    y: "-230%",
+    x: "-140%",
+    transform: "rotate(-4deg)",
+})
+tl.to(".card-dark", {
+    y: "-185%",
+    x: "0%",
+})
+tl.to(".card-yellow", {
+    y: "-240%",
+    x: "20%",
+    transform: "rotate(-5deg)",
+})

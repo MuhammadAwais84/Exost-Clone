@@ -1,4 +1,19 @@
+/*
+  styles/style.css
+
+  Purpose:
+  - Main stylesheet for the Exost-Clone project.
+  - Contains layout, loader, hero/video, multi-section pages,
+    cards, and responsive rules.
+
+  Notes:
+  - Keep body overflow hidden only if you intentionally prevent page scrolling.
+  - Many components are positioned absolutely for stacking/pinning animations.
+  - Use the section comments below to find related rules quickly.
+*/
+
 /* ========== CSS Boilerplate ========== */
+/* Basic reset and global typography/colors used across the app */
 * {
   margin: 0;
   padding: 0;
@@ -9,12 +24,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
   color: #efefef;
-  height: 100vh;
+  height: 100vh;            /* single-view layout: limits page to viewport height */
   width: 100%;
-  overflow: hidden;
+  overflow: hidden;         /* hide native scrollbars (used when custom scroll/animation present) */
   scroll-behavior: smooth;
 }
 
+/* Main container for sections; position relative to allow absolutely positioned children */
 main {
   width: 100%;
   display: flex;
@@ -24,58 +40,58 @@ main {
 
 /* ========================================
    ============= Loader Section ===========
-   ======================================== */
-
+   ========================================
+   - Full-screen loader that sits on top of page content.
+   - Elements inside (.track, .line, .boxes, .left, .right) are for visual animation.
+*/
 .loader {
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100vh;            /* covers the full viewport until loading finishes */
   display: flex;
   overflow: hidden;
-  z-index: 9999;
+  z-index: 9999;            /* keep loader above all interactive content */
 }
 
+/* center vertical track for loader visuals */
 .track {
   position: absolute;
   left: 50%;
-  transform: translateX(-40px);
+  transform: translateX(-40px); /* slightly offset intentionally for effect */
   width: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
+/* animated line in tracker - initial height 0, grown by JS or animation */
 .line {
   width: 5px;
   height: 0vh;
   background-color: rgb(255, 255, 255);
-
 }
 
+/* loader text style (reused elsewhere: keep generic paragraph override in mind) */
 p {
   font-size: 2rem;
   color: rgb(255, 255, 255);
 }
 
+/* loader split boxes: left/right cover; useful for reveal animations */
 .boxes {
   width: 100%;
   height: 100%;
   display: flex;
 }
 
-.left {
-  width: 50%;
-  height: 100vh;
-  background-color: rgb(0, 0, 0);
-}
-
+.left,
 .right {
   width: 50%;
   height: 100vh;
   background-color: rgb(0, 0, 0);
 }
 
+/* Generic image default used in multiple sections; rotation applied visually */
 img {
   height: 70px;
   width: 70px;
@@ -84,23 +100,23 @@ img {
 
 
 /* ========================================
-   ============= Home Section =============
-   ======================================== */
-
+   ============= Home / Hero Section ======
+   ========================================
+   - .home wraps the hero/video section; overlay and controls sit above the video.
+*/
 .home {
   width: 100%;
-  background-color: #84914c;
+  background-color: #84914c; /* fallback background while video loads */
   overflow-x: hidden;
 }
 
-
-/* page 1 css code start here  */
+/* Full-screen first page container */
 .page1 {
   height: 100vh;
   width: 100%;
 }
 
-/* video box  */
+/* Video container uses object-fit: cover so it fills the box responsively */
 .video {
   height: 100%;
   width: 100%;
@@ -108,33 +124,30 @@ img {
   overflow: hidden;
 }
 
-/* overly on video  */
+/* Semi-transparent overlay to darken video for readable foreground text */
 .overly {
   height: 100%;
   width: 100%;
   background-color: rgba(14, 59, 0, 0.234);
 }
 
-/* video styling */
+/* Video placed behind content; z-index -1 ensures it stays back */
 .video video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  /* video ko box fill karne ke liye */
+  object-fit: cover;        /* fill container without distortion when cropping allowed */
   z-index: -1;
-  /* content ke niche bhej do */
 }
 
-
-/* discover btn styling on video */
+/* Discover button positioned near bottom-center of hero */
 .discover-btn {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  top: 95%;
+  top: 95%;                 /* intentionally near the bottom - adjust if overlaps on small screens */
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   display: flex;
@@ -144,10 +157,12 @@ img {
   font-size: 1.5rem;
 }
 
-/* page 1 css code ended here  */
 
-
-/* page 2 css code start from here  */
+/* ========================================
+   ============= Page 2 (Content Block) ===
+   ========================================
+   - Centered content with responsive padding and typographic scale via clamp()
+*/
 .page2 {
   min-height: 100vh;
   width: 100%;
@@ -161,7 +176,7 @@ img {
   gap: 1.5rem;
 }
 
-/* Clock Image */
+/* icon / image sizing for the section; scales between small and large screens */
 .page2 img {
   width: clamp(3rem, 10vw, 6rem);
   height: clamp(3rem, 10vw, 6rem);
@@ -169,22 +184,21 @@ img {
   transform: rotateZ(0deg);
 }
 
-/* Heading */
+/* heading scales responsively */
 .page2 h1 {
   font-size: clamp(1.8rem, 5vw, 4rem);
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-/* Paragraph */
+/* paragraph max-width keeps line-length readable */
 .page2 p {
   max-width: 65ch;
-  /* keeps text readable */
   font-size: clamp(1rem, 2vw, 1.25rem);
   margin-bottom: 1rem;
 }
 
-/* Buttons container */
+/* buttons container supports wrap on narrow widths */
 .page2 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -192,30 +206,33 @@ img {
   margin-top: 2rem;
 }
 
-/* Buttons */
-.page2 .compition {
-  padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 3vw, 2rem);
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  border: 5px solid rgb(0, 0, 0);
-  background-color: transparent;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  color: white;
-  transition: background 0.3s ease;
-}
-
+/* CTA button styles - consistent padding, visible borders for contrast */
+.page2 .compition,
 .page2 .discover {
   padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 3vw, 2rem);
   font-size: clamp(0.9rem, 2vw, 1.1rem);
   border: 5px solid rgb(0, 0, 0);
-  background-color: black;
   border-radius: 0.5rem;
   cursor: pointer;
-  color: #84914c;
   transition: background 0.3s ease;
 }
 
-/* page 2 css code ended here  */
+.page2 .compition {
+  background-color: transparent;
+  color: white;
+}
+
+.page2 .discover {
+  background-color: black;
+  color: #84914c;
+}
+
+
+/* ========================================
+   ============= Page 3 (Content Block) ===
+   ========================================
+   - Similar structure to page2 but different image sizing and spacing.
+*/
 .page3 {
   min-height: 100vh;
   width: 100%;
@@ -242,16 +259,19 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Paragraph */
 .page3 p {
   max-width: 65ch;
-  /* keeps text readable */
   font-size: clamp(1rem, 2vw, 1.25rem);
   margin-bottom: 1rem;
 }
 
 
-
+/* ========================================
+   ============= Page 4 (Gallery / Cards) ==
+   ========================================
+   - Row of rotated boxes to create a collage/stacked appearance.
+   - Overflow hidden to crop images that exceed their boxes.
+*/
 .page4 {
   height: 100vh;
   display: flex;
@@ -261,10 +281,10 @@ img {
   overflow: hidden;
 }
 
-.warpper {
+.warpper {                   /* intentional spelling preserved (wrapper?) */
   display: flex;
   flex-direction: row;
-  transform: translateX(40%);
+  transform: translateX(40%); /* visual offset to center composition */
   gap: 2.5rem;
 }
 
@@ -277,8 +297,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  /* extra part cut ho jaye */
+  overflow: hidden;         /* hide image overflow for neat crop */
 }
 
 .box img {
@@ -286,110 +305,197 @@ img {
   height: 100%;
   object-fit: cover;
   display: block;
-  transform: rotate(360deg);
-  /* ya -90deg try karo */
+  transform: rotate(360deg); /* reset rotation; change for design effect */
 }
 
-.box1 {
-  transform: translateY(0px) rotateZ(5deg);
-  background-color: red;
-}
-
-.box2 {
-  transform: translateX(0px) rotateZ(-5deg);
-  background-color: blue;
-}
-
-.box3 {
-  transform: translateY(-50px) rotate(15deg);
-  background-color: yellow;
-}
-
-.box4 {
-  transform: translateX(40px) rotate(20deg);
-  background-color: rgb(153, 255, 0);
-}
-
-.box5 {
-  transform: translateX(-80px) rotate(-30deg);
-  background-color: cyan;
-}
-
+/* individual offsets to create the scattered collage look */
+.box1 { transform: translateY(0px) rotateZ(5deg); background-color: red; }
+.box2 { transform: translateX(0px) rotateZ(-5deg); background-color: blue; }
+.box3 { transform: translateY(-50px) rotate(15deg); background-color: yellow; }
+.box4 { transform: translateX(40px) rotate(20deg); background-color: rgb(153, 255, 0); }
+.box5 { transform: translateX(-80px) rotate(-30deg); background-color: cyan; }
 
 
 /* ========================================
   ========== Limitation Section ==========
-  ======================================== */
+  ========================================
+  - Uses absolutely stacked boxes centered on the screen.
+  - Designed for pinning effects or sequential reveals.
+*/
+.limitation {
+  position: relative;
+  height: 100vh;            /* allocate full viewport for the pinned animation */
+  overflow: hidden;
+}
 
-    .limitation {
-      position: relative;
-      height: 100vh;   /* one full viewport for pinning */
-      overflow: hidden;
-    }
+/* container holds stacked limitation boxes */
+.limitation-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-    /* Container now stacked absolutely */
-    .limitation-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
+/* Each .limitation-box is centered and stacked via absolute positioning.
+   Use JS to animate or change z-index for visible transitions. */
+.limitation-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  min-height: 280px;
+  height: clamp(280px, 28vw, 380px);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 1.5rem 1rem;
+  text-align: center;
+  border: 6px solid #8787876a; /* subtle outer border for separation */
+  color: yellowgreen;          /* text color override for contrast on dark backgrounds */
+}
 
-    /* Individual limitation box */
-    .limitation-box {
-      position: absolute;   /* stack them on top of each other */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      min-height: 260px;
-      height: clamp(260px, 28vw, 380px);
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem 1.5rem 1rem;
-      text-align: center;
-      border: 6px solid #8787876a;
-      color: yellowgreen;
-    }
+/* color variants for each stacked box */
+.limi1 { background-color: #565a29; }
+.limi2 { background-color: #254D2B; }
+.limi3 { background-color: #323232; }
+.limi4 { background-color: #5B2C57; }
 
-    /* Background color modifiers */
-    .limi1 { background-color: #565a29; }
-    .limi2 { background-color: #254D2B; }
-    .limi3 { background-color: #323232; }
-    .limi4 { background-color: #5B2C57; }
+/* content sizing inside the limitation boxes */
+.limitation-box img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+  transform: rotate(360deg);
+}
 
-    /* Box content */
-    .limitation-box img {
-      width: 150px;
-      height: auto;
-      margin-bottom: 1rem;
-      transform: rotate(360deg);
-    }
-    .limitation-box h3 {
-      font-size: 1.8rem;
-      margin: 0.5rem 0 0.3rem 0;
-      font-weight: 700;
-    }
-    .limitation-box p {
-      font-size: 1.4rem;
-      margin: 0;
-      color: yellowgreen;
-    }
+.limitation-box h3 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 0.3rem 0;
+  font-weight: 700;
+}
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .limitation-box {
-        max-width: 80%;
-        padding: 1.2rem 0.5rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .limitation-box {
-        max-width: 95%;
-        padding: 1rem 0.5rem;
-      }
-    }
+.limitation-box p {
+  font-size: 1.4rem;
+  margin: 0;
+  color: yellowgreen;
+}
+
+/* responsive adjustments to ensure limitations remain readable on small screens */
+@media (max-width: 900px) {
+  .limitation-box {
+    max-width: 80%;
+    padding: 1.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .limitation-box {
+    max-width: 95%;
+    padding: 1rem 0.5rem;
+  }
+}
+
+
+/* ========================================
+   ============= Card Stack Section =======
+   ========================================
+   - Cards are absolutely positioned to enable stacked entrance animations.
+   - Each .card should be animated into view by JS (e.g., translate or z-index).
+*/
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  overflow: hidden;
+}
+
+.card {
+  position: absolute;
+  top: 110%;               /* placed off-screen by default; animate into view */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+  width: 100%;
+  max-width: 20rem;
+  flex-shrink: 0;
+}
+
+/* color variants for cards - keep semantic names for maintainability */
+.card-green { background-color: #4a6f4a; }
+.card-dark  { background-color: #1a1a1a; }
+.card-yellow{ background-color: rgb(65, 65, 0); }
+
+.text-green      { color: #92e092; }
+.text-light-blue { color: #b3cde3; }
+
+.card-text-main {
+  color: #fff;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-text-secondary {
+  color: #fff;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 300;
+}
+
+.card-text-info {
+  color: #fff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* small label within the card */
+.card-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* primary content area of each card; centers icons/text vertically */
+.card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.icon-svg {
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   ============= Responsive Overrides =====
+   ========================================
+   - Example: on large screens, make container vertical if needed.
+   - Adjust or remove to suit the intended layout behavior.
+*/
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: column; /* switching to column on wide screens to stack content */
+  }
+}
